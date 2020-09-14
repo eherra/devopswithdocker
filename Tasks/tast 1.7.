@@ -1,0 +1,5 @@
+docker run -d -p 1234:80 devopsdockeruh/ports_exercise
+
+curl 127.0.0.1:1234
+Ports configured correctly!!
+
