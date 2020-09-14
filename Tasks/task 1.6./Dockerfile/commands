@@ -1,2 +1,6 @@
 docker build -t docker-clock .
+<<<<<<< HEAD
 docker run docker-clock —-clock
+=======
+docker run docker-clock -—clock
+>>>>>>> e9b649efcbcc30911448ac9ebeb500a6774f85bf
