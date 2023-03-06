@@ -1,0 +1,7 @@
+back:
+docker build . -t goapp
+docker run -p 8080:8080 goapp
+
+front:
+docker build . -t nodeapp
+docker run -p 4999:4999 nodeapp

@@ -1,0 +1,21 @@
+docker run -it -d --name 4four ubuntu sh -c 'while true; do echo "Input website:"; read 
+website; echo "Searching.."; sleep 1; curl http://$website; done'
+
+docker exec -it 4four bash
+
+apt-get update && apt-get -y install curl
+
+exit
+
+docker attach 4four
+
+Input website:
+helsinki.fi
+Searching..
+<html>
+<head><title>301 Moved Permanently</title></head>
+<body>
+<center><h1>301 Moved Permanently</h1></center>
+<hr><center>nginx/1.20.1</center>
+</body>
+</html>

@@ -1,0 +1,12 @@
+alpine size:
+3.13kB (virtual 15.7MB)
+
+ubuntu size:
+49kB (virtual 83MB)
+
+alpine has the same secret message after commands:
+
+docker run -it -d devopsdockeruh/simple-web-service:alpine
+docker exec -it 60 sh
+tail -f ./text.log
+

@@ -1,0 +1,4 @@
+text.log file needs to existed before the main command so:
+
+touch text.log
+docker run -v "$(pwd)/text.log:/usr/src/app/text.log" devopsdockeruh/simple-web-service
