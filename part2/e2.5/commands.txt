@@ -1,0 +1,11 @@
+You can either add to docker-compose.yml file:
+
+  compute:
+      image: devopsdockeruh/scaling-exercise-compute
+      environment:
+        - VIRTUAL_HOST=compute.localtest.me
+      scale: 5 <-- this
+
+or run the docker compose with command:
+
+docker-compose up -d --scale compute=5

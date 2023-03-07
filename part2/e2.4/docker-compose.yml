@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+    redis:
+      image: redis:latest
+      restart: always
+      ports:
+        - 6379:6379
+
+    example-backend:
+      build:
+        context: ./example-backend
+        dockerfile: Dockerfile
+      environment:
+        - REQUEST_ORIGIN=http://localhost:4999
+        - PORT=8080
+        - REDIS_HOST=redis
+        - REDIS_PORT=6379
+      ports:
+        - 8080:8080
+      container_name: example-backend
+      depends_on: 
+        - redis
+
+    example-frontend:
+      build:
+        context: ./example-frontend
+        dockerfile: Dockerfile
+      ports:
+        - 4999:4999
+      container_name: example-frontend
+      depends_on: 
+        - example-backend
