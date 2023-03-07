@@ -5,7 +5,7 @@ services:
       image: redis:latest
       restart: always
       ports:
-        - 6379:6379
+        - 6379
 
     postgres:
       image: postgres:latest
@@ -13,13 +13,26 @@ services:
       environment:
         - POSTGRES_USER=user
         - POSTGRES_PASSWORD=password
+      volumes:
+        - ./database:/var/lib/postgresql/data
+
+    proxy:
+      image: nginx:latest
+      restart: unless-stopped
+      depends_on:
+        - example-backend
+        - example-frontend
+      volumes:
+        - ./nginx.conf:/etc/nginx/nginx.conf 
+      ports:
+        - 80:80
 
     example-backend:
       build:
         context: ./example-backend
         dockerfile: Dockerfile
       environment:
-        - REQUEST_ORIGIN=http://localhost:4999
+        - REQUEST_ORIGIN=http://localhost:80
         - PORT=8080
         - REDIS_HOST=redis
         - REDIS_PORT=6379
@@ -28,7 +41,7 @@ services:
         - POSTGRES_PASSWORD=password
         - POSTGRES_DATABASE=postgres
       ports:
-        - 8080:8080
+        - 8080
       container_name: example-backend
       depends_on: 
         - redis
@@ -39,7 +52,7 @@ services:
         context: ./example-frontend
         dockerfile: Dockerfile
       ports:
-        - 4999:4999
+        - 4999
       container_name: example-frontend
       depends_on: 
         - example-backend

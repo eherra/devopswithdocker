@@ -1,0 +1,13 @@
+Changes
+
+for docker-compose on backend services
+
+I changed request origin to match since all the request are coming thru that address
+REQUEST_ORIGIN=http://localhost:80 
+
+
+From frontend Dockerfile I took removed:
+REACT_APP_BACKEND_URL=localhost:8080
+
+since it's not needed anymore and the calls are defaulted to /api if the env is missing.
+

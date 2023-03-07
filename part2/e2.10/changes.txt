@@ -1,0 +1,9 @@
+with m2 mac command worked:
+docker run -it --rm --network host networkstatic/nmap -Pn -sT localhost
+
+Not shown: 998 closed tcp ports (conn-refused)
+PORT    STATE SERVICE
+80/tcp  open  http
+111/tcp open  rpcbind
+
+Nmap done: 1 IP address (1 host up) scanned in 0.26 seconds
