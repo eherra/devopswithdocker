@@ -16,7 +16,7 @@ Then I created an heroku app with command:
 heroku create
 ````
 
-Having a [Dockerfile]() at the root of the project, I created an image and push it to to Heroku container registry with command:
+Having a [Dockerfile](https://github.com/eherra/devopswithdocker/blob/main/part1/e1.16/Dockerfile) at the root of the project, I created an image and push it to to Heroku container registry with command:
 
 ````
 heroku container:push web
