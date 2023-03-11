@@ -1,2 +1,1 @@
 Front dockerfile: 335.8MB
-Back  dockerfile: 25.18MB
