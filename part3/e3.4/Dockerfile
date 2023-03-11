@@ -4,12 +4,12 @@ RUN apt-get update && \
     apt-get -qy full-upgrade && \
     apt-get install -qy curl && \
     apt-get install -qy curl && \
-    curl -sSL https://get.docker.com/ | sh
+    curl -sSL https://get.docker.com/ | bash
     
 WORKDIR /usr/src/app
 
-COPY cloneAndPush.sh .
+COPY builder.sh .
 
-RUN chmod +x cloneAndPush.sh
+RUN chmod +x builder.sh
 
-ENTRYPOINT ["./cloneAndPush.sh"]
+ENTRYPOINT ["./builder.sh"]

@@ -2,8 +2,8 @@
 
 repository=git@github.com:$1.git
 dockerhubrepo=$2
-
-splitted=(${dockerhubrepo//// })
+username=$3
+password=$4
 
 # clone and get inside project root
 git clone $repository && cd "$(basename "$_" .git)"
@@ -12,9 +12,7 @@ git clone $repository && cd "$(basename "$_" .git)"
 docker build -t $dockerhubrepo .
 
 # login to Docker Hub
-docker login -u ${splitted[0]}
-
-# after fill password on terminal
+echo $password | docker login -u $username --password-stdin
 
 # push to Docker Hub
 docker push $dockerhubrepo:latest
